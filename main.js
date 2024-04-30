@@ -68,7 +68,7 @@ console.log(validateCred(invalid4));
 console.log(validateCred(invalid4));
 */
 
-//returns an array with the invalid cards passed on the argument array
+/*returns an array wich is the result of iterating trough each card of the array passed as argument and filtering only those who return false in the validatedCred function */
 const findInvalidCards = array => {
   const invalidCards = array.filter(card => !validateCred(card))
   return invalidCards;
