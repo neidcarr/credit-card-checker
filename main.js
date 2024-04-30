@@ -24,7 +24,13 @@ const invalid666 = [9, 9, 9];
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5, invalid666];
 
 
-// Add your functions below:
+/* validateCred checks if the numbers of the array passed as argument are valid according to the Luhn algorithm. 
+The for loop will iterate the array end to start. 
+A variable sum will hold the sum of all numbers. 
+toDouble is a flag to indicate whether the number at the current index should be doubled or not. 
+Is is initialized to false because the number at last index should not be. If toDouble is false, it will add the current index number to the sum and set toDouble to true. 
+If toDouble is true, the current index number is saved in num and doubled. If it is greater than 9 when double, 9 is subtracted. num is added to sum. 
+Return a boolean, sum % 100 === 0. */
 
 const validateCred = array => {
   let sum = 0;
@@ -46,7 +52,11 @@ const validateCred = array => {
     return sum % 10 === 0;
 }
 
-/*console.log(validateCred(valid1));
+
+/*
+//Tests 
+
+console.log(validateCred(valid1));
 console.log(validateCred(valid2));
 console.log(validateCred(valid3));
 console.log(validateCred(valid4));
@@ -55,14 +65,21 @@ console.log(validateCred(invalid1));
 console.log(validateCred(invalid2));
 console.log(validateCred(invalid3));
 console.log(validateCred(invalid4));
-console.log(validateCred(invalid4));*/
+console.log(validateCred(invalid4));
+*/
 
+//returns an array with the invalid cards passed on the argument array
 const findInvalidCards = array => {
   const invalidCards = array.filter(card => !validateCred(card))
   return invalidCards;
 }
 
 console.log(findInvalidCards(batch));
+
+/*returns an array with the names of the companies in the array of invalid cards passed as argument.
+invalidCompanies will be the array holding the nammes. 
+the forEach methos is used to iterate through each element of the array, checking its first number element[0]. If it is 3 and invalidCompanies does not include 'Amex', 'Amex' is added to it. 
+The same for 4 - 'Visa', 5 - 'Mastercard, 6 - 'Discover. If it isn't any of these prints 'Not found' */
 
 const idInvalidCompanies = array => {
   const invalidCompanies = [];
